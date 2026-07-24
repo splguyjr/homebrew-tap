@@ -3,8 +3,10 @@
 개인 Homebrew tap.
 
 ```bash
-brew install splguyjr/tap/anham
+brew install splguyjr/tap/anhamdie
 ```
+
+설치 후 `~/Applications/AnhamDie.app`에 자동 등록됩니다.
 
 | Formula | 별칭 | 설명 |
 |---|---|---|

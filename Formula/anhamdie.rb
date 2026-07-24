@@ -16,15 +16,25 @@ class Anhamdie < Formula
     prefix.install "dist/AnhamDie.app"
   end
 
+  def post_install
+    # 빌드 샌드박스 밖에서 실행되는 훅 — ~/Applications에 자동 등록한다.
+    # opt_prefix 경유 심볼릭 링크라 brew upgrade 후에도 항상 최신 버전을 가리킨다.
+    apps_dir = Pathname(Dir.home)/"Applications"
+    apps_dir.mkpath
+    link = apps_dir/"AnhamDie.app"
+    FileUtils.rm_rf(link)
+    FileUtils.ln_s("#{opt_prefix}/AnhamDie.app", link)
+  end
+
   def caveats
     <<~EOS
-      앱을 Applications에 연결하고 실행하세요:
-        ln -sfn "#{opt_prefix}/AnhamDie.app" ~/Applications/AnhamDie.app
+      ~/Applications/AnhamDie.app 으로 자동 등록되었습니다. 실행:
         open ~/Applications/AnhamDie.app
 
       메뉴바 상주 앱입니다 (Dock 아이콘·로그인 자동 실행은 앱 설정에서).
       전역 단축키: ⌥⌘T 브리핑 · ⌥⌘O 오버레이 · ⌥⌘N 빠른 추가 · ⌥⌘M 메인 창
       macOS 15(Sequoia) 이상 필요.
+      제거 시: brew uninstall anhamdie 후 ~/Applications/AnhamDie.app 링크 삭제.
     EOS
   end
 
