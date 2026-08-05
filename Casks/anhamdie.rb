@@ -1,6 +1,6 @@
 cask "anhamdie" do
-  version "1.5.0"
-  sha256 "b1ae0c50546741a2e528834cba94c1bbeebedb07adc4749a3eeef89c73f19afe"
+  version "1.6.0"
+  sha256 "e540a9e62603db0e95488b0e057dc6c0a590be2ad1ae880ee7ed82589408e631"
 
   url "https://github.com/splguyjr/anham-die/archive/refs/tags/v#{version}.tar.gz"
   name "AnhamDie"
